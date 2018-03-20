@@ -23,6 +23,8 @@ namespace SavingCloud
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
             var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(x => x.FullName.Contains("SavingCloud"));
+
+            var autoMapAssyemblies = new string[] {"DomainService", "Web" };//需要创建map的程序集
             foreach (var assembly in assemblies)
             {
                 //注册常规实例IOC
@@ -30,6 +32,18 @@ namespace SavingCloud
                     .Where(t => typeof(ITransientDependency)
                     .IsAssignableFrom(t))
                     .AsImplementedInterfaces();
+
+                //注册单例IOC
+                builder.RegisterAssemblyTypes(assembly)
+                    .Where(t => typeof(ISingletonDependency)
+                    .IsAssignableFrom(t))
+                    .AsImplementedInterfaces().SingleInstance();
+
+                //设置程序集里的对象automaper
+                if (autoMapAssyemblies.Any(name => assembly.FullName.Contains(name)))
+                {
+                    assembly.NeedAutoMap();
+                }
             }
 
             var container = builder.Build();

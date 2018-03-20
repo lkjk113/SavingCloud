@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 namespace SavingCloud
 {
     /// <summary>
-    /// 需要依赖注入的对象的接口
+    /// 实体接口
     /// </summary>
-    public interface ITransientDependency
+    /// <typeparam name="TPrimaryKey"></typeparam>
+    public interface IEntity<TPrimaryKey>
     {
+        TPrimaryKey _EntityKey { get; set; }
     }
 }
