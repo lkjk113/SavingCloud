@@ -1,4 +1,5 @@
-﻿using SavingCloud.Web.Services.Article;
+﻿using SavingCloud.DomainService.Article;
+using SavingCloud.Web.Services.Article;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,17 @@ namespace SavingCloud.Web.Controllers
     public class ArticleController : ApiController
     {
 
-        ArticleService _articleService = new ArticleService();
+
+        private readonly IArticleService _articleService;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="articleService"></param>
+        public ArticleController(IArticleService articleService)
+        {
+            _articleService = articleService;
+        }
 
         /// <summary>
         /// 创建文档
@@ -31,9 +42,9 @@ namespace SavingCloud.Web.Controllers
         /// 获取所有文档
         /// </summary>
         /// <returns></returns>
-        //public List<ArticleBasic> GetAll()
-        //{
-        //    return _articleService.GetAll();
-        //}
+        public List<DomainService.Article.Dto.GetArticleListOutput> GetAll()
+        {
+            return _articleService.GetAll();
+        }
     }
 }

@@ -9,12 +9,24 @@
             文档操作
             </summary>
         </member>
+        <member name="M:SavingCloud.Web.Controllers.ArticleController.#ctor(SavingCloud.DomainService.Article.IArticleService)">
+            <summary>
+            
+            </summary>
+            <param name="articleService"></param>
+        </member>
         <member name="M:SavingCloud.Web.Controllers.ArticleController.Create(System.String,System.String)">
             <summary>
             创建文档
             </summary>
             <param name="title"></param>
             <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SavingCloud.Web.Controllers.ArticleController.GetAll">
+            <summary>
+            获取所有文档
+            </summary>
             <returns></returns>
         </member>
         <member name="M:SavingCloud.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
