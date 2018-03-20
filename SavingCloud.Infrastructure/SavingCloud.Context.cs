@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SavingCloud.Model
+namespace SavingCloud.Infrastructure
 {
     using System;
     using System.Data.Entity;

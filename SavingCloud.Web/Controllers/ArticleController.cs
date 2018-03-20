@@ -1,5 +1,4 @@
-﻿using SavingCloud.Model;
-using SavingCloud.Web.Services.Article;
+﻿using SavingCloud.Web.Services.Article;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,9 +31,9 @@ namespace SavingCloud.Web.Controllers
         /// 获取所有文档
         /// </summary>
         /// <returns></returns>
-        public List<ArticleBasic> GetAll()
-        {
-            return _articleService.GetAll();
-        }
+        //public List<ArticleBasic> GetAll()
+        //{
+        //    return _articleService.GetAll();
+        //}
     }
 }

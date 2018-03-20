@@ -7,8 +7,8 @@
     <ProjectGuid>{C5EFACF7-2B4A-46D7-BAF8-F03BF74FA1C0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SavingCloud.Model</RootNamespace>
-    <AssemblyName>SavingCloud.Model</AssemblyName>
+    <RootNamespace>SavingCloud.Infrastructure</RootNamespace>
+    <AssemblyName>SavingCloud.Infrastructure</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
