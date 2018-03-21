@@ -11,12 +11,19 @@ namespace SavingCloud.Infrastructure
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     
-    public partial class UserInfo
+    public partial class UserInfo : EntityBase<int>
     {
         public int Id { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public System.DateTime CreateOn { get; set; }
+    	/// <summary>
+    	/// 此属性为封装主键方便在底层对实体统一操作,在Repository中请使用主键Id
+    	/// </summary>
+        [NotMapped]
+        public override int _EntityKey { get=>Id; set=>Id=value; }
     }
 }

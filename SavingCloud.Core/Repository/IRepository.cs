@@ -12,7 +12,7 @@ namespace SavingCloud
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
     /// <typeparam name="TPrimaryKey"></typeparam>
-    public interface IRepository<TEntity, TPrimaryKey> : ITransientDependency where TEntity : IEntity<TPrimaryKey>
+    public interface IRepository<TEntity, TPrimaryKey> : ITransientDependency where TEntity : EntityBase<TPrimaryKey>
     {
         IQueryable<TEntity> GetAll();
 
@@ -69,6 +69,6 @@ namespace SavingCloud
         int ExecuteNonquery(string sql, params object[] sqlParams);
     }
 
-    public interface IRepository<TEntity> : IRepository<TEntity, int> where TEntity : IEntity<int>
+    public interface IRepository<TEntity> : IRepository<TEntity, int> where TEntity : EntityBase<int>
     { }
 }

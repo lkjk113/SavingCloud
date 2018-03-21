@@ -65,6 +65,7 @@ foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection)
     }
 
     var simpleProperties = typeMapper.GetSimpleProperties(entity);
+	var haveIdProperty=false;
     if (simpleProperties.Any())
     {
         foreach (var edmProperty in simpleProperties)
@@ -74,6 +75,16 @@ foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection)
 <#
         }
     }
+
+	if(!haveIdProperty)
+	{#>
+	/// <summary>
+	/// 此属性为封装主键方便在底层对实体统一操作,在Repository中请使用主键<#=entity.KeyMembers[0]#>
+	/// </summary>
+    [NotMapped]
+    <#=codeStringGenerator.PropertyId(entity)#>
+<#	
+	}
 
     if (complexProperties.Any())
     {
@@ -293,6 +304,30 @@ public class CodeStringGenerator
             _code.SpaceAfter(Accessibility.ForSetter(edmProperty)));
     }
 
+	 public string PropertyId(EdmProperty edmProperty)
+    {
+        return string.Format(
+            CultureInfo.InvariantCulture,
+            "public  {0} {1} {{ get; set; }}",         
+            _typeMapper.GetTypeName(edmProperty.TypeUsage),
+            _code.Escape(edmProperty));
+    }
+
+	 public string PropertyId(EntityType entity)
+    {
+
+	var key=entity.KeyMembers[0];
+
+        var str= string.Format(
+            CultureInfo.InvariantCulture,
+            "public override {0} _EntityKey {{ get=>{1}; set=>{1}=value; }}",         
+            _typeMapper.GetTypeName(key.TypeUsage),
+            key.Name);
+
+		return str;
+		
+    }
+
     public string NavigationProperty(NavigationProperty navProp)
     {
         var endType = _typeMapper.GetTypeName(navProp.ToEndMember.GetEntityType());
@@ -313,12 +348,20 @@ public class CodeStringGenerator
     
     public string EntityClassOpening(EntityType entity)
     {
+		var keys =entity.KeyMembers;
+		string baseEntity="";
+		   if (keys.Any())
+		   {
+		   baseEntity=string.Format(" : EntityBase<{0}>",_typeMapper.GetTypeName(keys[0].TypeUsage));
+		   }
+
         return string.Format(
             CultureInfo.InvariantCulture,
             "{0} {1}partial class {2}{3}",
             Accessibility.ForType(entity),
             _code.SpaceAfter(_code.AbstractOption(entity)),
             _code.Escape(entity),
+			baseEntity,
             _code.StringBefore(" : ", _typeMapper.GetTypeName(entity.BaseType)));
     }
     
@@ -425,8 +468,10 @@ public class CodeStringGenerator
         return inHeader == string.IsNullOrEmpty(_code.VsNamespaceSuggestion())
             ? string.Format(
                 CultureInfo.InvariantCulture,
-                "{0}using System;{1}" +
-                "{2}",
+                "{0}using System;{1}" 
+				+Environment.NewLine+"using System.ComponentModel.DataAnnotations;"
+				+Environment.NewLine+"using System.ComponentModel.DataAnnotations.Schema;" 
+                +"{2}",
                 inHeader ? Environment.NewLine : "",
                 includeCollections ? (Environment.NewLine + "using System.Collections.Generic;") : "",
                 inHeader ? "" : Environment.NewLine)

@@ -11,8 +11,10 @@ namespace SavingCloud.Infrastructure
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     
-    public partial class ArticleBasic
+    public partial class ArticleBasic : EntityBase<int>
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -23,5 +25,10 @@ namespace SavingCloud.Infrastructure
         public System.DateTime CreateOn { get; set; }
         public int CreateBy { get; set; }
         public string CreateUser { get; set; }
+    	/// <summary>
+    	/// 此属性为封装主键方便在底层对实体统一操作,在Repository中请使用主键Id
+    	/// </summary>
+        [NotMapped]
+        public override int _EntityKey { get=>Id; set=>Id=value; }
     }
 }

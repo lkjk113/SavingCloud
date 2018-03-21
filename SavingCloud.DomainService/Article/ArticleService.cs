@@ -10,9 +10,16 @@ namespace SavingCloud.Web.Services.Article
     /// <summary>
     /// 文档服务
     /// </summary>
-    public class ArticleService: IArticleService
+    public class ArticleService : IArticleService
     {
         //SavingCloudContainer db = new SavingCloudContainer();
+
+        private readonly IRepository<ArticleBasic, int> _articleBasicRepository;
+
+        public ArticleService(IRepository<ArticleBasic, int> articleBasicRepository)
+        {
+            _articleBasicRepository = articleBasicRepository;
+        }
 
         /// <summary>
         /// 创建文档
@@ -44,7 +51,7 @@ namespace SavingCloud.Web.Services.Article
         public List<GetArticleListOutput> GetAll()
         {
             //return db.ArticleBasic.ToList().MapTo<List<GetArticleListOutput>>();
-            return new List<GetArticleListOutput>();
+            return _articleBasicRepository.GetAll().ToList().MapTo<List<GetArticleListOutput>>();
         }
     }
 }
