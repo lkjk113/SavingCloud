@@ -17,11 +17,11 @@ namespace SavingCloud
     public class Repository<TEntity, TPrimaryKey> : IRepository<TEntity, TPrimaryKey> where TEntity : EntityBase<TPrimaryKey>
     {
         private static SavingCloudContainer db;
-        private readonly DbSet<TEntity> Table;
+        DbSet<TEntity> Table;
 
         public Repository()
         {
-            if (db == null)
+            if (db == null)//TODO:这里可以移到Global
             {
                 db = new SavingCloudContainer();
             }
@@ -132,5 +132,10 @@ namespace SavingCloud
         {
             return db.Database.ExecuteSqlCommand(sql, sqlParams);
         }
+    }
+
+
+    public class Repository<TEntity> : Repository<TEntity, int> where TEntity : EntityBase<int>
+    {
     }
 }

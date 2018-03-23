@@ -16,11 +16,14 @@ namespace SavingCloud
     {
         protected void Application_Start()
         {
-
+            //跨域设置
+            //var cors = new EnableCorsAttribute("*", "*", "*");
+            //GlobalConfiguration.Configuration.EnableCors(cors);
 
             var builder = new ContainerBuilder();
 
             //注册数据仓储
+            builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
             builder.RegisterGeneric(typeof(Repository<,>)).As(typeof(IRepository<,>));
 
             //注册webapi

@@ -12,9 +12,9 @@ namespace SavingCloud.DomainService
     /// </summary>
     public class ArticleService : IArticleService
     {
-        SavingCloudContainer db = new SavingCloudContainer();
+        //SavingCloudContainer db = new SavingCloudContainer();
 
-        //private readonly IRepository<ArticleBasic, int> _articleBasicRepository;
+        private readonly IRepository<ArticleBasic, int> _articleBasicRepository;
 
         public ArticleService(IRepository<ArticleBasic, int> articleBasicRepository)
         {
@@ -51,7 +51,8 @@ namespace SavingCloud.DomainService
         public List<GetArticleListOutput> GetAll()
         {
             //return db.ArticleBasic.ToList().MapTo<List<GetArticleListOutput>>();
-            return null;// _articleBasicRepository.GetAll().ToList().MapTo<List<GetArticleListOutput>>();
+            //return  _articleBasicRepository.GetAll().ToList().MapTo<List<GetArticleListOutput>>();
+            return new List<GetArticleListOutput>();
         }
     }
 }
