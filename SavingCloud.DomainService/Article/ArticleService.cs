@@ -5,20 +5,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SavingCloud.Web.Services.Article
+namespace SavingCloud.DomainService
 {
     /// <summary>
     /// 文档服务
     /// </summary>
     public class ArticleService : IArticleService
     {
-        //SavingCloudContainer db = new SavingCloudContainer();
+        SavingCloudContainer db = new SavingCloudContainer();
 
-        private readonly IRepository<ArticleBasic, int> _articleBasicRepository;
+        //private readonly IRepository<ArticleBasic, int> _articleBasicRepository;
 
         public ArticleService(IRepository<ArticleBasic, int> articleBasicRepository)
         {
-            _articleBasicRepository = articleBasicRepository;
+            //_articleBasicRepository = articleBasicRepository;
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace SavingCloud.Web.Services.Article
         public List<GetArticleListOutput> GetAll()
         {
             //return db.ArticleBasic.ToList().MapTo<List<GetArticleListOutput>>();
-            return _articleBasicRepository.GetAll().ToList().MapTo<List<GetArticleListOutput>>();
+            return null;// _articleBasicRepository.GetAll().ToList().MapTo<List<GetArticleListOutput>>();
         }
     }
 }
