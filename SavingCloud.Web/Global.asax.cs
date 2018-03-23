@@ -20,11 +20,15 @@ namespace SavingCloud
 
             var builder = new ContainerBuilder();
 
+            //注册数据仓储
+            builder.RegisterGeneric(typeof(Repository<,>)).As(typeof(IRepository<,>));
+
+            //注册webapi
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
             var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(x => x.FullName.Contains("SavingCloud"));
 
-            var autoMapAssyemblies = new string[] {"DomainService", "Web" };//需要创建map的程序集
+            var autoMapAssyemblies = new string[] { "DomainService", "Web" };//需要创建map的程序集
             foreach (var assembly in assemblies)
             {
                 //注册常规实例IOC

@@ -282,6 +282,10 @@
       <Project>{99e4da8d-3850-402f-82ad-ebd20dd49084}</Project>
       <Name>SavingCloud.DomainService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SavingCloud.Infrastructure\SavingCloud.Infrastructure.csproj">
+      <Project>{c5efacf7-2b4a-46d7-baf8-f03bf74fa1c0}</Project>
+      <Name>SavingCloud.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
