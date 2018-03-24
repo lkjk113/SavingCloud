@@ -135,7 +135,7 @@ namespace SavingCloud
     }
 
 
-    public class Repository<TEntity> : Repository<TEntity, int> where TEntity : EntityBase<int>
+    public class Repository<TEntity> : Repository<TEntity, int> , IRepository<TEntity> where TEntity : EntityBase<int>
     {
     }
 }

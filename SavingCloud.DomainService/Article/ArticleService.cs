@@ -14,9 +14,9 @@ namespace SavingCloud.DomainService
     {
         //SavingCloudContainer db = new SavingCloudContainer();
 
-        private readonly IRepository<ArticleBasic, int> _articleBasicRepository;
+        private readonly IRepository<ArticleBasic> _articleBasicRepository;
 
-        public ArticleService(IRepository<ArticleBasic, int> articleBasicRepository)
+        public ArticleService(IRepository<ArticleBasic> articleBasicRepository)
         {
             //_articleBasicRepository = articleBasicRepository;
         }

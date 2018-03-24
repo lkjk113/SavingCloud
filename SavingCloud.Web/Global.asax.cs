@@ -23,8 +23,8 @@ namespace SavingCloud
             var builder = new ContainerBuilder();
 
             //注册数据仓储
-            builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
             builder.RegisterGeneric(typeof(Repository<,>)).As(typeof(IRepository<,>));
+            builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
 
             //注册webapi
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
