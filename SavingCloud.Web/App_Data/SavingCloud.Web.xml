@@ -23,6 +23,13 @@
             <param name="content"></param>
             <returns></returns>
         </member>
+        <member name="M:SavingCloud.Web.Controllers.ArticleController.Delete(System.Int32)">
+            <summary>
+            删除
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:SavingCloud.Web.Controllers.ArticleController.GetAll">
             <summary>
             获取所有文档

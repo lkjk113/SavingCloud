@@ -7,7 +7,7 @@ namespace SavingCloud.Web.Controllers
     /// <summary>
     /// 文档操作
     /// </summary>
-    public class ArticleController : ApiController
+    public class ArticleController : ControllerBase
     {
 
 
@@ -31,6 +31,17 @@ namespace SavingCloud.Web.Controllers
         public int Create(string title, string content)
         {
             return _articleService.Create(title, content);
+        }
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool Delete(int id)
+        {
+            return _articleService.Delete(id);
+
         }
 
         /// <summary>

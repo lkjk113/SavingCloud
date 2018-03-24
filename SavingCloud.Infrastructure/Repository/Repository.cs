@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SavingCloud
 {
@@ -16,15 +14,14 @@ namespace SavingCloud
     /// <typeparam name="TPrimaryKey"></typeparam>
     public class Repository<TEntity, TPrimaryKey> : IRepository<TEntity, TPrimaryKey> where TEntity : EntityBase<TPrimaryKey>
     {
-        private static SavingCloudContainer db;
+        private static SavingCloudContext db;
         DbSet<TEntity> Table;
 
         public Repository()
         {
-            if (db == null)//TODO:这里可以移到Global
-            {
-                db = new SavingCloudContainer();
-            }
+            //TODO:这里可以移到Global
+            db = SavingCloudContext.Current;
+
             Table = db.Set<TEntity>();
         }
 
@@ -135,7 +132,7 @@ namespace SavingCloud
     }
 
 
-    public class Repository<TEntity> : Repository<TEntity, int> , IRepository<TEntity> where TEntity : EntityBase<int>
+    public class Repository<TEntity> : Repository<TEntity, int>, IRepository<TEntity> where TEntity : EntityBase<int>
     {
     }
 }

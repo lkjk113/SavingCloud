@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SavingCloud.Web.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,7 +11,7 @@ namespace SavingCloud.Controllers
     /// <summary>
     /// Restful接口示例
     /// </summary>
-    public class RestDemoController : ApiController
+    public class RestDemoController : ControllerBase
     {
         // GET api/values
         /// <summary>

@@ -16,6 +16,15 @@ namespace SavingCloud
     {
         protected void Application_Start()
         {
+
+            AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            GlobalConfiguration.Configuration.Filters.Add(new UnitOfWorkFilter());//--注册全局过滤器
+
             //跨域设置
             //var cors = new EnableCorsAttribute("*", "*", "*");
             //GlobalConfiguration.Configuration.EnableCors(cors);
@@ -46,7 +55,7 @@ namespace SavingCloud
                     .IsAssignableFrom(t))
                     .AsImplementedInterfaces().SingleInstance();
 
-                //设置程序集里的对象automaper
+                //设置程序集里的对象automapper
                 if (autoMapAssyemblies.Any(name => assembly.FullName.Contains(name)))
                 {
                     assembly.NeedAutoMap();
@@ -56,12 +65,7 @@ namespace SavingCloud
 
             var container = builder.Build();
             GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
-
-            AreaRegistration.RegisterAllAreas();
-            GlobalConfiguration.Configure(WebApiConfig.Register);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            AutoMapperConfigurationExtensions.CreateMapping();
         }
     }
 }
