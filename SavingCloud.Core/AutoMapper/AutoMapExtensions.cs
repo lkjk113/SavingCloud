@@ -1,28 +1,81 @@
 ﻿using AutoMapper;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace SavingCloud
 {
     public static class AutoMapExtensions
     {
+        static List<Type> types = new List<Type>();
+
         /// <summary>
-        /// Converts an object to another using AutoMapper library. Creates a new object of <typeparamref name="TDestination"/>.
-        /// There must be a mapping between objects before calling this method.
+        /// 标记为需要map
         /// </summary>
-        /// <typeparam name="TDestination">Type of the destination object</typeparam>
-        /// <param name="source">Source object</param>
+        /// <param name="assembly"></param>
+        public static void NeedAutoMap(this Assembly assembly)
+        {
+            types.AddRange(assembly.GetTypes().Where(type =>
+            {
+                var typeInfo = type.GetTypeInfo();
+                return typeInfo.IsDefined(typeof(AutoMapAttribute)) ||
+                       typeInfo.IsDefined(typeof(AutoMapFromAttribute)) ||
+                       typeInfo.IsDefined(typeof(AutoMapToAttribute));
+            }));
+        }
+
+        /// <summary>
+        /// 根据特性创建mapping
+        /// </summary>
+        /// <param name="configuration"></param>
+        /// <param name="type"></param>
+        internal static void CreateAutoAttributeMaps(this IMapperConfigurationExpression configuration, Type type)
+        {
+            foreach (var autoMapAttribute in type.GetTypeInfo().GetCustomAttributes<AutoMapAttributeBase>())
+            {
+                autoMapAttribute.CreateMap(configuration, type);
+            }
+        }
+
+        /// <summary>
+        /// 创建程序集的Automapper
+        /// </summary>
+        /// <param name="assembly"></param>
+        public static void CreateMapping()
+        {
+            Action<IMapperConfigurationExpression> configurer = configuration =>
+            {
+                foreach (var type in types)
+                {
+                    configuration.CreateAutoAttributeMaps(type);
+                }
+            };
+
+            Mapper.Initialize(configurer);
+            types = null;
+        }
+
+
+
+        /// <summary>
+        /// 创建目标实例并且map
+        /// </summary>
+        /// <typeparam name="TDestination"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
         public static TDestination MapTo<TDestination>(this object source)
         {
             return Mapper.Map<TDestination>(source);
         }
 
         /// <summary>
-        /// Execute a mapping from the source object to the existing destination object
-        /// There must be a mapping between objects before calling this method.
+        /// map到已存在的实例
         /// </summary>
-        /// <typeparam name="TSource">Source type</typeparam>
-        /// <typeparam name="TDestination">Destination type</typeparam>
-        /// <param name="source">Source object</param>
-        /// <param name="destination">Destination object</param>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TDestination"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="destination"></param>
         /// <returns></returns>
         public static TDestination MapTo<TSource, TDestination>(this TSource source, TDestination destination)
         {

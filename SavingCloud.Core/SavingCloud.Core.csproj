@@ -55,7 +55,6 @@
     <Compile Include="AutoMapper\AutoMapAttributeBase.cs" />
     <Compile Include="AutoMapper\AutoMapExtensions.cs" />
     <Compile Include="AutoMapper\AutoMapFromAttribute.cs" />
-    <Compile Include="AutoMapper\AutoMapperConfigurationExtensions.cs" />
     <Compile Include="AutoMapper\AutoMapToAttribute.cs" />
     <Compile Include="Dependency\ISingletonDependency.cs" />
     <Compile Include="Dependency\ITransientDependency.cs" />

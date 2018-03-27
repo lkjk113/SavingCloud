@@ -67,7 +67,7 @@ namespace SavingCloud
 
             var container = builder.Build();
             GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
-            AutoMapperConfigurationExtensions.CreateMapping();
+            AutoMapExtensions.CreateMapping();
         }
     }
 }
