@@ -14,13 +14,13 @@ namespace SavingCloud
     /// <typeparam name="TPrimaryKey"></typeparam>
     public class Repository<TEntity, TPrimaryKey> : IRepository<TEntity, TPrimaryKey> where TEntity : EntityBase<TPrimaryKey>
     {
-        private static SavingCloudContext db;
+        private static MainDbContext db;
         DbSet<TEntity> Table;
 
         public Repository()
         {
             //TODO:这里可以移到Global
-            db = SavingCloudContext.Current;
+            db = MainDbContext.Current;
 
             Table = db.Set<TEntity>();
         }

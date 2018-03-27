@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace SavingCloud.Infrastructure
 {
-    public class SavingCloudContext : SavingCloudContainer
+    public class MainDbContext : SavingCloudContainer
     {
-        static SavingCloudContext _current;
-        public static SavingCloudContext Current
+        static MainDbContext _current;
+        public static MainDbContext Current
         {
             get
             {
                 if (_current == null)
                 {
-                    _current = new SavingCloudContext();
+                    _current = new MainDbContext();
                 }
 
                 return _current;

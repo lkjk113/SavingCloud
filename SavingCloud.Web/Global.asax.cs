@@ -23,7 +23,7 @@ namespace SavingCloud
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            GlobalConfiguration.Configuration.Filters.Add(new UnitOfWorkFilter());//--注册全局过滤器
+
 
             //跨域设置
             //var cors = new EnableCorsAttribute("*", "*", "*");
@@ -38,6 +38,9 @@ namespace SavingCloud
             //注册webapi
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
+            //注册api事务
+            GlobalConfiguration.Configuration.Filters.Add(new UnitOfWorkFilter());
+
             var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(x => x.FullName.Contains("SavingCloud"));
 
             var autoMapAssyemblies = new string[] { "DomainService", "Web", "Infrastructure", "Core" };//需要创建map的程序集
@@ -48,7 +51,7 @@ namespace SavingCloud
                     .Where(t => typeof(ITransientDependency)
                     .IsAssignableFrom(t))
                     .AsImplementedInterfaces();
-
+                
                 //注册单例IOC
                 builder.RegisterAssemblyTypes(assembly)
                     .Where(t => typeof(ISingletonDependency)
@@ -61,7 +64,6 @@ namespace SavingCloud
                     assembly.NeedAutoMap();
                 }
             }
-            //注册Api类型
 
             var container = builder.Build();
             GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);

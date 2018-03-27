@@ -8,11 +8,11 @@ namespace SavingCloud.Infrastructure
 {
     public class UnitOfWork : IDisposable
     {
-        SavingCloudContext context;
+        MainDbContext context;
 
         private UnitOfWork()
         {
-            context = SavingCloudContext.Current;
+            context = MainDbContext.Current;
         }
 
         public static UnitOfWork Begin()
@@ -36,7 +36,7 @@ namespace SavingCloud.Infrastructure
                 if (disposing)
                 {
                     context.Dispose();
-                    SavingCloudContext.Current = null;
+                    MainDbContext.Current = null;
                 }
                 // TODO: 将大型字段设置为 null。
                 disposedValue = true;

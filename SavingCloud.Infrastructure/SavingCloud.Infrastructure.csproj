@@ -85,7 +85,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SavingCloud.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DbContext\SavingCloudContext.cs" />
+    <Compile Include="DbContext\MainDbContext.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
     <Compile Include="UserInfo.cs">
       <DependentUpon>SavingCloud.tt</DependentUpon>
