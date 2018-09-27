@@ -1,10 +1,10 @@
-﻿using SavingCloud.DomainService.Article.Dto;
+﻿using SavingCloud.Application.Article.Dto;
 using SavingCloud.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SavingCloud.DomainService
+namespace SavingCloud.Application
 {
     /// <summary>
     /// 文档服务

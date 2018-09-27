@@ -234,13 +234,13 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SavingCloud.Core\SavingCloud.Core.csproj">
-      <Project>{47d45945-5c45-42e9-bc9d-1071c94d37b0}</Project>
-      <Name>SavingCloud.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SavingCloud.DomainService\SavingCloud.DomainService.csproj">
+    <ProjectReference Include="..\SavingCloud.Application\SavingCloud.Application.csproj">
       <Project>{99e4da8d-3850-402f-82ad-ebd20dd49084}</Project>
-      <Name>SavingCloud.DomainService</Name>
+      <Name>SavingCloud.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SavingCloud.Framework\SavingCloud.Framework.csproj">
+      <Project>{47d45945-5c45-42e9-bc9d-1071c94d37b0}</Project>
+      <Name>SavingCloud.Framework</Name>
     </ProjectReference>
     <ProjectReference Include="..\SavingCloud.Infrastructure\SavingCloud.Infrastructure.csproj">
       <Project>{c5efacf7-2b4a-46d7-baf8-f03bf74fa1c0}</Project>

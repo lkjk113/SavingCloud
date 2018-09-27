@@ -1,11 +1,11 @@
-﻿using SavingCloud.DomainService.Article.Dto;
+﻿using SavingCloud.Application.Article.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SavingCloud.DomainService
+namespace SavingCloud.Application
 {
     public interface IArticleService : ITransientDependency
     {

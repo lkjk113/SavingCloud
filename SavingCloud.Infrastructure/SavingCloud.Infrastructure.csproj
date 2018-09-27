@@ -120,9 +120,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SavingCloud.Core\SavingCloud.Core.csproj">
+    <ProjectReference Include="..\SavingCloud.Framework\SavingCloud.Framework.csproj">
       <Project>{47d45945-5c45-42e9-bc9d-1071c94d37b0}</Project>
-      <Name>SavingCloud.Core</Name>
+      <Name>SavingCloud.Framework</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

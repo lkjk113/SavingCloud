@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SavingCloud.Web", "SavingCl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SavingCloud.Infrastructure", "SavingCloud.Infrastructure\SavingCloud.Infrastructure.csproj", "{C5EFACF7-2B4A-46D7-BAF8-F03BF74FA1C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SavingCloud.DomainService", "SavingCloud.DomainService\SavingCloud.DomainService.csproj", "{99E4DA8D-3850-402F-82AD-EBD20DD49084}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SavingCloud.Application", "SavingCloud.Application\SavingCloud.Application.csproj", "{99E4DA8D-3850-402F-82AD-EBD20DD49084}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SavingCloud.Core", "SavingCloud.Core\SavingCloud.Core.csproj", "{47D45945-5C45-42E9-BC9D-1071C94D37B0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SavingCloud.Framework", "SavingCloud.Framework\SavingCloud.Framework.csproj", "{47D45945-5C45-42E9-BC9D-1071C94D37B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -9,7 +9,7 @@
             文档操作
             </summary>
         </member>
-        <member name="M:SavingCloud.Web.Controllers.ArticleController.#ctor(SavingCloud.DomainService.IArticleService)">
+        <member name="M:SavingCloud.Web.Controllers.ArticleController.#ctor(SavingCloud.Application.IArticleService)">
             <summary>
             
             </summary>

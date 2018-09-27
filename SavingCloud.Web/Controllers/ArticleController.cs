@@ -1,4 +1,4 @@
-﻿using SavingCloud.DomainService;
+﻿using SavingCloud.Application;
 using System.Collections.Generic;
 using System.Web.Http;
 
@@ -48,7 +48,7 @@ namespace SavingCloud.Web.Controllers
         /// 获取所有文档
         /// </summary>
         /// <returns></returns>
-        public List<DomainService.Article.Dto.GetArticleListOutput> GetAll()
+        public List<Application.Article.Dto.GetArticleListOutput> GetAll()
         {
             return _articleService.GetAll();
         }

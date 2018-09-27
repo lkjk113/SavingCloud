@@ -1,7 +1,7 @@
 ﻿using SavingCloud.Infrastructure;
 using System;
 
-namespace SavingCloud.DomainService.Article.Dto
+namespace SavingCloud.Application.Article.Dto
 {
     [AutoMap(typeof(ArticleBasic))]
     public class GetArticleListOutput
