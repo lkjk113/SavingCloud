@@ -4,6 +4,20 @@
         <name>SavingCloud.Web</name>
     </assembly>
     <members>
+        <member name="M:SavingCloud.Web.Controllers.AdUserController.Login(System.String,System.String)">
+            <summary>
+            登录域用户
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SavingCloud.Web.Controllers.AdUserController.GetAllUsername">
+            <summary>
+            获取所有用户名
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:SavingCloud.Web.Controllers.ArticleController">
             <summary>
             文档操作
