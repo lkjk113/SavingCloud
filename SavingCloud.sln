@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SavingCloud.Framework", "Sa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SavingCloud.Domain", "SavingCloud.Domain\SavingCloud.Domain.csproj", "{70515D1A-EE7C-4F10-A916-B8AEEF8458D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SavingCloud.Common", "SavingCloud.Common\SavingCloud.Common.csproj", "{2F9A8177-923A-4ED1-AC4C-D7F6DEE01DF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{70515D1A-EE7C-4F10-A916-B8AEEF8458D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70515D1A-EE7C-4F10-A916-B8AEEF8458D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70515D1A-EE7C-4F10-A916-B8AEEF8458D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F9A8177-923A-4ED1-AC4C-D7F6DEE01DF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F9A8177-923A-4ED1-AC4C-D7F6DEE01DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F9A8177-923A-4ED1-AC4C-D7F6DEE01DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F9A8177-923A-4ED1-AC4C-D7F6DEE01DF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
